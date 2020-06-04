@@ -1,3 +1,6 @@
+use crate::epidem::compartment::Compartment; 
+use crate::epidem::transition::Transition; 
+
 pub trait IsModel {
     fn name(&self) -> String;
     fn next(&self);
@@ -24,8 +27,4 @@ impl IsModel for Model {
     }
     fn next(&self) {
     }
-}
-
-pub struct Compartment {
-    name: String,
 }
