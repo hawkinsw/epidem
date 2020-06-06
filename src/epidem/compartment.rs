@@ -8,7 +8,7 @@ pub trait IsCompartment {
     fn get_current_value(&mut self) -> f64;
     fn set_current_value(&mut self, current_value: f64) -> f64;
     fn adjust_next_value(&mut self, adjustment: f64);
-    fn new(name: String) -> Self;
+    fn new(name: String, initial_value: i64) -> Self;
 }
 
 impl IsCompartment for Compartment {
@@ -25,7 +25,11 @@ impl IsCompartment for Compartment {
         self.next_value += adjustment;
     }
 
-    fn new(name: String) -> Self {
-        Self{name: name, current_value: 0.0, next_value: 0.0}
+    fn new(name: String, initial_value: i64) -> Self {
+        Self {
+            name: name,
+            current_value: initial_value as f64,
+            next_value: 0.0,
+        }
     }
 }

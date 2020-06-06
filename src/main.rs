@@ -1,6 +1,7 @@
 extern crate epidem;
 
-use epidem::epidem::model;
+use epidem::epidem::model::IsModel;
+use epidem::epidem::sir::SIR;
 
 struct Sir {
     // Rate of susceptibles -> infecteds
@@ -65,7 +66,9 @@ impl Sir {
 }
 
 fn main() {
-    let m = model::Model::new(&"Testing",vec![]);
-    let mut model = Sir::new(0.05, 6.0, 1.0, 100, 100.0);
-    model.run();
+    let mut m = SIR::new(&"Testing SIR", 100, 0, 0);
+    //let mut model = Sir::new(0.05, 6.0, 1.0, 100, 100.0);
+    for x in 1..10 {
+        m.next();
+    }
 }
